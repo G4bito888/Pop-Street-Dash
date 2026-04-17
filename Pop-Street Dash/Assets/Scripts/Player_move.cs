@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Detección")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private float fallLimit = -30f;
 
     private Rigidbody2D rb;
     private Player_Inputs controls;
@@ -57,6 +59,11 @@ public class PlayerMovement : MonoBehaviour
         moveInput = controls.Player.Move.ReadValue<Vector2>();
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         if (isGrounded && isGliding) StartGliding(false);
+
+        if (transform.position.y < fallLimit)
+        {
+            ReiniciarNivel();
+        }
     }
 
     void FixedUpdate()
@@ -147,6 +154,21 @@ public class PlayerMovement : MonoBehaviour
         StartGliding(false);
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void ReiniciarNivel()
+    {
+        // Obtiene el índice de la escena actual y la vuelve a cargar
+        int escenaActual = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(escenaActual);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Pincho"))
+        {
+            ReiniciarNivel();
+        }
     }
 
     private void OnEnable() => controls.Enable();
