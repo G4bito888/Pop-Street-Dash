@@ -233,6 +233,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7969386985973464386, guid: 0af00af6943f34a46a8af1d8d9bcb3fb, type: 3}
   m_PrefabInstance: {fileID: 49874854}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &49874856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1351763006595357842, guid: 0af00af6943f34a46a8af1d8d9bcb3fb, type: 3}
+  m_PrefabInstance: {fileID: 49874854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &314224684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,6 +286,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2831610544096424519, guid: ef2b31f852018c1468de4aa688a1e4f6, type: 3}
+      propertyPath: PanelOpciones
+      value: 
+      objectReference: {fileID: 49874856}
     - target: {fileID: 9119007127905992010, guid: ef2b31f852018c1468de4aa688a1e4f6, type: 3}
       propertyPath: m_Name
       value: NavegacionManager
@@ -415,6 +424,7 @@ GameObject:
   - component: {fileID: 1287812829}
   - component: {fileID: 1287812828}
   - component: {fileID: 1287812827}
+  - component: {fileID: 1287812830}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -496,6 +506,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1287812830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287812826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9534dbd555da7884d96c59a8dbae363c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  target: {fileID: 1691530664}
+  smoothTime: 0.3
 --- !u!1001 &1685096657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -609,6 +633,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1477301764896269765, guid: 6db4c749bcead3449843048263ab733e, type: 3}
   m_PrefabInstance: {fileID: 1685096657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1691530664 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2378806567424019558, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
+  m_PrefabInstance: {fileID: 3647408805428982263}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972837830
 GameObject:
@@ -878,6 +907,10 @@ PrefabInstance:
     - target: {fileID: 6103530581646756016, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344991786055555314, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
