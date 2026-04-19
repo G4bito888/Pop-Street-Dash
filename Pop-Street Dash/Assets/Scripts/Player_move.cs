@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Inercia y Giro")]
     [SerializeField] private float glideAcceleration = 15f; // Qué tan rápido gana velocidad horizontal
     [SerializeField] private float glideDeceleration = 10f; // Qué tan rápido se frena al soltar
-    [SerializeField] private float flipSpeed = 10f;         // Velocidad del giro visual
 
     [Header("Élitros")]
     [SerializeField] private float glideRotationSpeed = 120f;
@@ -118,24 +117,21 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void HandleVisuals(float angle)
+{
+    // 1. Flip instantáneo: Solo cambiamos el signo si hay movimiento significativo
+    // Esto evita que el personaje pase por el valor "0" de escala
+    if (rb.linearVelocity.x > 0.01f)
     {
-        // Smooth Flip: MoveTowards escala X entre el valor original y su negativo
-        float targetFlip = (rb.linearVelocity.x != 0) ? Mathf.Sign(rb.linearVelocity.x) * initialScale.x : visualFlipX;
-        visualFlipX = Mathf.MoveTowards(visualFlipX, targetFlip, flipSpeed * Time.fixedDeltaTime);
-        
-        transform.localScale = new Vector3(visualFlipX, initialScale.y, initialScale.z);
-        
-        // Rotación suavizada (solo si planea)
-        if (isGliding)
-        {
-            float dir = (visualFlipX < 0) ? -1 : 1;
-            transform.rotation = Quaternion.Euler(0, 0, angle * dir);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, 0.15f);
-        }
+        transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
     }
+    else if (rb.linearVelocity.x < -0.01f)
+    {
+        transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+    }
+
+    // 2. Mantenerlo recto siempre (tu petición anterior)
+    transform.rotation = Quaternion.identity;
+}
 
     private void StartGliding(bool state)
     {
