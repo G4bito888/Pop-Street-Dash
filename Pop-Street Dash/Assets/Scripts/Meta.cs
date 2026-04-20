@@ -2,28 +2,27 @@ using UnityEngine;
 
 public class Meta : MonoBehaviour
 {
-    [Header ("Panel")]
     [SerializeField] private GameObject panelGanaste;
+    [SerializeField] private string nombreDeEsteNivel = "Nivel1"; // Identificador único
 
     private void OnTriggerEnter2D(Collider2D collision)
+{
+    if (collision.CompareTag("Player"))
     {
-        // Detecta si el objeto que entró es el Jugador
-        if (collision.CompareTag("Player"))
-        {
-            FinalizarNivel();
-        }
+        // Registro en memoria (HashSet evita duplicados)
+        GameManager.nivelesCompletados.Add(nombreDeEsteNivel);
+        FinalizarNivel();
     }
+}
 
     private void FinalizarNivel()
     {
         if (panelGanaste != null)
         {
             panelGanaste.SetActive(true);
-            Time.timeScale = 0f; // Detiene el movimiento y físicas
-            
-            // Si quieres que el ratón aparezca para clicar el botón:
-            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0f;
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
