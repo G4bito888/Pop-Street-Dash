@@ -10,6 +10,8 @@ public class MenuManager : MonoBehaviour
     [Header("Input System")]
     [SerializeField] private Player_Inputs playerInput; // Arrastra el objeto con el componente PlayerInput aquí
 
+    [Header("Efectos Visuales")]
+    [SerializeField] private GameObject fondoOscurecido;
 
 void Update()
 {
@@ -45,21 +47,22 @@ void Update()
 
     // Método principal para abrir/cerrar (Toggle)
     public void ToggleOpciones()
+{
+    if (panelOpciones != null)
     {
-        Debug.Log("¡El botón fue presionado!");
-        if (panelOpciones != null)
+        bool estaActivado = !panelOpciones.activeSelf;
+        
+        panelOpciones.SetActive(estaActivado);
+        
+        // Activamos el fondo oscuro al mismo tiempo
+        if (fondoOscurecido != null)
         {
-            bool estaActivado = !panelOpciones.activeSelf;
-            panelOpciones.SetActive(estaActivado);
+            fondoOscurecido.SetActive(estaActivado);
+        }
 
-            // Gestiona la pausa del tiempo
-            Time.timeScale = estaActivado ? 0f : 1f;
-        }
-        else
-        {
-            Debug.LogError("Error: 'panelOpciones' no asignado en el Inspector de NavegacionManager.");
-        }
+        Time.timeScale = estaActivado ? 0f : 1f;
     }
+}
 
     // --- Métodos para Botones Físicos (UI) ---
 
@@ -75,4 +78,6 @@ void Update()
         Application.Quit();
         Debug.Log("El juego se ha cerrado.");
     }
+
+    
 }
