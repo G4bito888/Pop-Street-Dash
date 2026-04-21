@@ -17,7 +17,6 @@ public class IconoNivel : MonoBehaviour
 
     void OnEnable()
     {
-        // Verificación en la clase estática
         if (GameManager.nivelesCompletados.Contains(nombreDelNivel))
         {
             imagenUI.sprite = spriteCompletado;

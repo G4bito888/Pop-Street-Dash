@@ -3718,10 +3718,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3698522823117293672, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698522823117293672, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -162.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4216332965069789676, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
       propertyPath: m_Name
       value: PanelGanaste
       objectReference: {fileID: 0}
+    - target: {fileID: 4216332965069789676, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617166773886451742, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617166773886451742, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8448261441086427159, guid: e940281e9efcf43449a1b3b362874ad5, type: 3}
     - target: {fileID: 5987154011119143377, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3730,8 +3750,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CambiarEscena
       objectReference: {fileID: 0}
+    - target: {fileID: 7074868414872544503, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074868414872544503, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -74.49694
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194557677337960813, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_text
+      value: You Win!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5459169443924220217, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
@@ -11428,17 +11461,25 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 1964701504937854281, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
+      propertyPath: climbPower
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964701504937854281, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
+      propertyPath: maxGlideSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2378806567424019558, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2378806567424019558, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.7
+      value: -37
       objectReference: {fileID: 0}
     - target: {fileID: 2378806567424019558, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.5
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 2378806567424019558, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
       propertyPath: m_LocalPosition.z

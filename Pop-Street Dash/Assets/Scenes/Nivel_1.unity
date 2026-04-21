@@ -199,7 +199,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6103530581646756016, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1832970902}
   m_SourcePrefab: {fileID: 100100000, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
 --- !u!4 &35542603 stripped
 Transform:
@@ -1820,10 +1823,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3698522823117293672, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698522823117293672, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -162.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4216332965069789676, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
       propertyPath: m_Name
       value: PanelGanaste
       objectReference: {fileID: 0}
+    - target: {fileID: 4216332965069789676, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617166773886451742, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617166773886451742, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8448261441086427159, guid: e940281e9efcf43449a1b3b362874ad5, type: 3}
     - target: {fileID: 5987154011119143377, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1832,8 +1855,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CambiarEscena
       objectReference: {fileID: 0}
+    - target: {fileID: 7074868414872544503, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074868414872544503, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.862244
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194557677337960813, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
+      propertyPath: m_text
+      value: You Win!!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5459169443924220217, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15bdd8bccdc151747ba5fcf0fa9e9a3b, type: 3}
@@ -2821,8 +2857,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1585653531}
-  - {fileID: 550727093}
   - {fileID: 121498635}
+  - {fileID: 550727093}
   - {fileID: 1648936249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5703,6 +5739,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d8f1c2d33af764f88792537385d1f1, type: 3}
+--- !u!1 &1832970901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6103530581646756016, guid: d458bb1853183e04ca3b6a251c4d3bde, type: 3}
+  m_PrefabInstance: {fileID: 28130045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1832970902
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832970901}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 753e57a3416609e47baf759b35286d10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1856275256
 PrefabInstance:
   m_ObjectHideFlags: 0

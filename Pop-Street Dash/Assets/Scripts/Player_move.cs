@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float normalGravity = 3f;
 
     [Header("Inercia y Giro")]
-    [SerializeField] private float glideAcceleration = 15f; // Qué tan rápido gana velocidad horizontal
-    [SerializeField] private float glideDeceleration = 10f; // Qué tan rápido se frena al soltar
+    [SerializeField] private float glideAcceleration = 15f; 
+    [SerializeField] private float glideDeceleration = 10f;
 
     [Header("Élitros")]
     [SerializeField] private float glideRotationSpeed = 120f;
@@ -34,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 initialScale;
     private bool isGrounded, isGliding;
     private float currentGlideAngle, currentGlideSpeed;
-    private float currentHorizontalVel; // Velocidad horizontal suavizada
-    private float visualFlipX;           // Valor de escala X suavizado
+    private float currentHorizontalVel; 
+    private float visualFlipX;          
+    private Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         controls = new Player_Inputs();
         rb.gravityScale = normalGravity;
         initialScale = transform.localScale;
@@ -63,26 +65,31 @@ public class PlayerMovement : MonoBehaviour
         {
             ReiniciarNivel();
         }
+        ActualizarAnimaciones();
     }
 
+    private void ActualizarAnimaciones()
+    {
+        anim.SetFloat("Speed", Mathf.Abs(currentHorizontalVel));
+        anim.SetBool("IsGrounded", isGrounded);
+        anim.SetBool("IsGliding", isGliding);
+        anim.SetFloat("VerticalVel", rb.linearVelocity.y);
+    }
     void FixedUpdate()
     {
         if (isGliding) ApplyGlidePhysics();
         else
         {
-            // Movimiento terrestre con aceleración básica
             float targetVel = moveInput.x * speed;
             currentHorizontalVel = Mathf.MoveTowards(currentHorizontalVel, targetVel, glideAcceleration * Time.fixedDeltaTime);
             rb.linearVelocity = new Vector2(currentHorizontalVel, rb.linearVelocity.y);
             
-            // Visuales básicos
             HandleVisuals(0f);
         }
     }
 
     private void ApplyGlidePhysics()
     {
-        // 1. Ángulo y Energía
         currentGlideAngle += moveInput.y * glideRotationSpeed * Time.fixedDeltaTime;
         currentGlideAngle = Mathf.Clamp(currentGlideAngle, -60f, 60f);
 
@@ -91,15 +98,12 @@ public class PlayerMovement : MonoBehaviour
         currentGlideSpeed += (speedChange - glideDrag) * Time.fixedDeltaTime;
         currentGlideSpeed = Mathf.Clamp(currentGlideSpeed, 0.1f, maxGlideSpeed);
 
-        // 2. Inercia Horizontal (Aceleración gradual)
         float rad = currentGlideAngle * Mathf.Deg2Rad;
         float targetForward = moveInput.x * Mathf.Cos(rad) * currentGlideSpeed;
         
-        // Determinar si usamos aceleración o frenado
         float accelRate = (Mathf.Abs(moveInput.x) > 0.01f) ? glideAcceleration : glideDeceleration;
         currentHorizontalVel = Mathf.MoveTowards(currentHorizontalVel, targetForward, accelRate * Time.fixedDeltaTime);
 
-        // 3. Sustentación y Gravedad
         float liftEfficiency = Mathf.Clamp01(currentGlideSpeed / 10f);
         float lift = Mathf.Sin(rad) * currentGlideSpeed * liftEfficiency * climbPower;
         
@@ -112,26 +116,22 @@ public class PlayerMovement : MonoBehaviour
 
         rb.linearVelocity = new Vector2(currentHorizontalVel, finalY);
 
-        // 4. Visuales Suavizados
         HandleVisuals(currentGlideAngle);
     }
 
     private void HandleVisuals(float angle)
-{
-    // 1. Flip instantáneo: Solo cambiamos el signo si hay movimiento significativo
-    // Esto evita que el personaje pase por el valor "0" de escala
-    if (rb.linearVelocity.x > 0.01f)
     {
-        transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
-    }
-    else if (rb.linearVelocity.x < -0.01f)
-    {
-        transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
-    }
+        if (rb.linearVelocity.x > 0.01f)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        }
+        else if (rb.linearVelocity.x < -0.01f)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        }
 
-    // 2. Mantenerlo recto siempre (tu petición anterior)
-    transform.rotation = Quaternion.identity;
-}
+        transform.rotation = Quaternion.identity;
+    }
 
     private void StartGliding(bool state)
     {
@@ -154,7 +154,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void ReiniciarNivel()
     {
-        // Obtiene el índice de la escena actual y la vuelve a cargar
         int escenaActual = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(escenaActual);
     }
