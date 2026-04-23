@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Secondary_level.unity
     guid: 567ca06f27e035e4387f711c20da14c8
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: bd40a79358e916f468ab37590d271dd0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
